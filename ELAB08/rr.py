@@ -1,0 +1,5 @@
+s = int(input())
+m = int(input())
+if  m-2 <= s - (2*m-2) <  m : print("Surprising")
+elif   m-1 <=  s - (2*m-1) < m : print("Surprising")
+else : print("Not surprising")
