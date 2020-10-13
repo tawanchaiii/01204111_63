@@ -1,5 +1,3 @@
-
-import math
 n = int(input("Material size: "))
 a = list()
 qs = [[0]*n for _ in range(n)]
@@ -19,24 +17,11 @@ for i in range(1,n):
 neww = [[0]*(n-2) for _ in range(n-2)]
 for i in range(2,n):
     for j in range(2,n):
-        if j-3<0  : 
-            aa = 0
-        else : 
-            aa = qs[i][j-3]
-        if i-3<0 : 
-            bb = 0
-        else : 
-            bb = qs[i-3][j]
-        
-        if (aa == 0 and bb!= 0) or (bb == 0 and aa!= 0) :
-        
-            neww[i-2][j-2] = float((qs[i][j]-aa-bb )/9)
-        elif aa == 0 and bb==0:
-     
-            neww[i-2][j-2] = float((qs[i][j])/9)
-        else :
-            neww[i-2][j-2] = float((qs[i][j]-aa-bb+qs[i-3][j-3] )/9)
-con = [[False]*6]
+        aa = 0 if j-3 < 0 else qs[i][j-3]
+        bb = 0 if i-3 < 0 else qs[i-3][j]
+        if aa > 0 and bb > 0 : neww[i-2][j-2] = float((qs[i][j]-aa-bb+qs[i-3][j-3] )/9)
+        else : neww[i-2][j-2] = float((qs[i][j]-aa-bb )/9)
+      
 s= len(neww)
 c1 = [85,70,60]
 c2 = [90,85,70]
