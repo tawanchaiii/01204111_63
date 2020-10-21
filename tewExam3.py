@@ -42,3 +42,26 @@ B = sorted(A)
 
 for i in B:
  print(f'{i.key} , {i.value}')
+
+##################### 3. Function in quiz07 #####################
+def readMat(a):
+    mat,op,line=[],[],[]
+    for i in a:
+        if i in [['+'],['*'],['-']]:
+            mat.append(line)
+            line=[]
+            op.append(i)
+        else :line.append(i)
+    if len(line)>0: mat.append(line)
+    return mat,op
+
+def cal(mat,op):
+    for i in range(len(op)):
+        if '+' in op[i]:
+            mat[i+1] = plusMat(mat[i],mat[i+1])
+        elif '-' in op[i]:
+            mat[i+1] = minusMat(mat[i],mat[i+1])
+        elif '*' in op[i]:
+            mat[i+1] = mulMat(mat[i],mat[i+1])
+        res=mat[i+1]
+    return res
